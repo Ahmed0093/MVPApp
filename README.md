@@ -15,15 +15,14 @@ Run the task jacocoTestReport from Gradle.
 Coverage Report will be found in folder with name reports in build directorty.
 in coverage folder open the index.html file to see the report.
 
-ALso a sonar task to run the sonarqube with test coverage analysis.
+ALso adding SonarQube with Sonar task to run the sonarqube with test coverage analysis.
+from gradle also sonarqube task .
 
 
 
 
 ### TO DO
-
--Adding SonarQube. 
-
+ 
 -Adding Scripts to automate build and Report generation.
 
 
