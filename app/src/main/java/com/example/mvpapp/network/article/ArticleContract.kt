@@ -11,6 +11,7 @@ val articleContractView by lazy { MainActivity() }
  interface ArticleContract {
     interface View {
         fun showArticleList(results: List<Results>?)
+        fun navigateToDetailsActivity(results: Results)
 //        fun showArticleList(items: List<Results>)
 //        fun articleClicked(itemClicked: Results)
 
@@ -19,5 +20,8 @@ val articleContractView by lazy { MainActivity() }
     interface Presenter {
         fun fetchArticles()
         fun setView(mainActivity: MainActivity)
+        fun onArticleItemCLicked(results: Results)
+        fun onDestroyCalled()
+
     }
 }

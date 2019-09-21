@@ -1,5 +1,6 @@
 package com.example.mvpapp.network
 
+import android.content.Context
 import com.facebook.stetho.okhttp3.BuildConfig
 
 /**
@@ -7,15 +8,19 @@ import com.facebook.stetho.okhttp3.BuildConfig
  */
 
 import com.example.mvpapp.constants.Constants
+import com.example.mvpapp.model.ApiResponse
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import io.reactivex.Observable
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.logging.HttpLoggingInterceptor
+import java.util.*
+
 val networkModule by lazy { NetworkModule() }
 
 class NetworkModule {
@@ -27,6 +32,12 @@ class NetworkModule {
             .addCallAdapterFactory(providesRxJavaCallAdapterFactory())
             .client(providesOkHttpClient())
             .build()
+    }
+    fun provideApi(): Api {
+        return providesRetrofit().create(Api::class.java);
+    }
+    fun provideArticleApi(): Observable<ApiResponse> {
+        return providesRetrofit().create(Api::class.java).getArticles();
     }
 
 

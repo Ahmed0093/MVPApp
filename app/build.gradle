@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    androidExtensions {
+        experimental = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -35,8 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin2}"
-    // Support Design
+    implementation 'org.mockito:mockito-core:2.27.0'    // Support Design
     implementation "com.android.support:design:${versions.android_support_version}"
 
     // RecyclerView
@@ -75,5 +80,12 @@ dependencies {
     //Stetho
     implementation "com.facebook.stetho:stetho:${versions.stetho}"
     implementation "com.facebook.stetho:stetho-okhttp3:${versions.stetho}"
+    // Espresso UI Testing
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$rootProject.ext.espressoVersion"
 
 }
