@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "org.sonarqube"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -103,6 +105,25 @@ jacoco {
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
+def fileFilter = [
+        '**/databinding/**/*.*',
+        '**/android/databinding/*Binding.*',
+        '**/BR.*',
+        '**/R.*',
+        '**/R$*.*',
+        '**/BuildConfig.*',
+        '**/Manifest*.*',
+        '**/*_MembersInjector.*',
+        '**/Dagger*Component.*',
+        '**/Dagger*Component$Builder.*',
+        '**/*Module_*Factory.*',
+        '**/*Fragment*.*',
+        '**/*Activity*.*',
+        '**/*Adapter*.*',
+        '**/*ViewPager*.*',
+        '**/*ViewHolder*.*',
+        '**/*Module*.*'
+]
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest','createDebugCoverageReport']) {
     group = "Reporting"
     description = "Generate Jacoco coverage reports for Debug build"
@@ -112,26 +133,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest','creat
         html.enabled = true
     }
 
-    def fileFilter = [
-            '**/databinding/**/*.*',
-            '**/android/databinding/*Binding.*',
-            '**/BR.*',
-            '**/R.*',
-            '**/R$*.*',
-            '**/BuildConfig.*',
-            '**/Manifest*.*',
-            '**/*_MembersInjector.*',
-            '**/Dagger*Component.*',
-            '**/Dagger*Component$Builder.*',
-            '**/*Module_*Factory.*',
-            '**/*Fragment*.*',
-            '**/*Activity*.*',
-            '**/*Adapter*.*',
-            '**/*ViewPager*.*',
-            '**/*ViewHolder*.*',
-            '**/*Module*.*'
-    ]
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/intermediates/javac/debug", excludes: fileFilter)
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug", excludes: fileFilter)
     def mainSrc = "${project.projectDir}/src/main/java"
 
     sourceDirectories = files([mainSrc])
@@ -140,4 +142,31 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest','creat
             "jacoco/testDebugUnitTest.exec",
             "outputs/code-coverage/connected/*coverage.ec"
     ])
+
+
 }
+sonarqube {
+    sonarqube {
+        properties {
+            property "sonar.sourceEncoding", "UTF-8"
+            property "sonar.projectName", "SonarQubeSample"
+            property "sonar.projectKey", "SonarQubeSample"
+            property "sonar.host.url", "http://localhost:9000"
+            property "sonar.projectVersion", "1.0"
+            property "sonar.language", "kotlin"
+            property "sonar.sources", "src/main/"
+            property "sonar.java.binaries", "${buildDir}/intermediates/javac/debug"
+            property 'sonar.java.test.binaries', "${buildDir}/intermediates/javac/debug"
+            property 'sonar.junit.reportsPath', '${buildDir}/test-results/testDebugUnitTest'
+            property "sonar.tests", ["src/test/java"]
+            property 'sonar.coverage.jacoco.xmlReportPaths', "build/reports/coverage/debug/report.xml"
+            property 'sonar.java.coveragePlugin', 'jacoco'
+            property 'sonar.exclusions', '**/*.js,**/*.css,**/*.html'
+            property 'sonar.jacoco.itReportPath', fileTree(dir: project.projectDir, includes: ['**/*.ec'])
+            property 'sonar.jacoco.reportPath', fileTree(dir: project.projectDir, includes: ['**/*.exec'])
+
+        }
+    }
+
+}
+

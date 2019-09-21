@@ -1,6 +1,5 @@
 package com.example.mvpapp.network
 
-import android.content.Context
 import com.facebook.stetho.okhttp3.BuildConfig
 
 /**
@@ -47,7 +46,6 @@ class NetworkModule {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder().addInterceptor(logging)
 
-            //.cache(cache)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
@@ -58,13 +56,6 @@ class NetworkModule {
 
         return client.build()
     }
-
-
-//    private fun providesOkhttpCache(context: Context): Cache {
-//        val cacheSize = 10 * 1024 * 1024 // 10 MB
-//        return Cache(context.cacheDir, cacheSize.toLong())
-//    }
-
 
     private fun providesGson(): Gson {
         return Gson()

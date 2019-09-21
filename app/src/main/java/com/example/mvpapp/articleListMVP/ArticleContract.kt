@@ -11,9 +11,6 @@ val articleContractView by lazy { ArticleActivity() }
     interface View {
         fun showArticleList(results: List<Results>?)
         fun navigateToDetailsActivity(results: Results)
-//        fun showArticleList(items: List<Results>)
-//        fun articleClicked(itemClicked: Results)
-
     }
 
     interface Presenter {
