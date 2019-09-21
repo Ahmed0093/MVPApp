@@ -2,6 +2,7 @@
 
 This project is aimed for learning and to get hands dirty with MVP architecture using Kotlin,Rx-Java2 with adding Unit Tests and UI test.
 with coverage report.
+lazy functianlites and deafult value constractor were used from kotlin to make an easy dependency injection without using external dependency injection framework.
 
 ## Getting Started
 The app contains 2 screen
