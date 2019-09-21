@@ -1,4 +1,4 @@
-package com.example.mvpapp.adapter
+package com.example.mvpapp.articleListMVP.adapter
 
 import android.view.LayoutInflater
 import android.view.View

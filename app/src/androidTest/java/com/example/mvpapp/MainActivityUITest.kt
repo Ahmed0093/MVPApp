@@ -7,6 +7,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
+import com.example.mvpapp.articleListMVP.ArticleActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,8 +20,8 @@ import org.junit.runner.RunWith
 class MainActivityUITest {
     @Rule
     @JvmField
-    var activityActivityTestRule: ActivityTestRule<MainActivity> =
-        object : ActivityTestRule<MainActivity>(MainActivity::class.java) {
+    var activityActivityTestRule: ActivityTestRule<ArticleActivity> =
+        object : ActivityTestRule<ArticleActivity>(ArticleActivity::class.java) {
 
         }
 

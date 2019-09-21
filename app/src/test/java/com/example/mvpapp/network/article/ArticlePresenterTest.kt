@@ -1,6 +1,8 @@
 package com.example.mvpapp.network.article
 
 import android.content.Context
+import com.example.mvpapp.articleListMVP.ArticleContract
+import com.example.mvpapp.articleListMVP.ArticlePresenter
 import com.example.mvpapp.model.ApiResponse
 import com.example.mvpapp.model.Results
 import com.example.mvpapp.network.DomainIntegration
@@ -15,7 +17,6 @@ import org.junit.Before
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import java.io.IOException
@@ -40,7 +41,12 @@ class ArticlePresenterTest {
         MockitoAnnotations.initMocks(this)
         val context = mock(Context::class.java)
         DomainIntegration.withContext(context)
-        articlePresenter = ArticlePresenter(articleView, TestScheduler(), disposables, apiHelper)
+        articlePresenter = ArticlePresenter(
+            articleView,
+            TestScheduler(),
+            disposables,
+            apiHelper
+        )
     }
 
     @Test

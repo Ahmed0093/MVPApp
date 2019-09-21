@@ -1,10 +1,8 @@
-package com.example.mvpapp.network.article
+package com.example.mvpapp.articleListMVP
 
 import android.util.Log
-import com.example.mvpapp.MainActivity
 import com.example.mvpapp.model.ApiResponse
 import com.example.mvpapp.model.Results
-import com.example.mvpapp.network.Api
 import com.example.mvpapp.network.NetworkModule
 import com.example.mvpapp.network.networkModule
 import com.example.mvpapp.scheduler.IScheduler
@@ -24,7 +22,7 @@ class ArticlePresenter(
     val apiHelper: NetworkModule = networkModule
 ) : ArticleContract.Presenter {
 
-    override fun setView(mainActivity: MainActivity) {
+    override fun setView(mainActivity: ArticleActivity) {
         articleView = mainActivity
     }
 

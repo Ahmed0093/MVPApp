@@ -1,4 +1,4 @@
-package com.example.mvpapp
+package com.example.mvpapp.articleListMVP
 
 import android.content.Context
 import android.content.Intent
@@ -6,16 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mvpapp.adapter.ArticleAdapter
-import com.example.mvpapp.adapter.ArticleListAdapter
+import com.example.mvpapp.DetailsActivity
+import com.example.mvpapp.R
+import com.example.mvpapp.articleListMVP.adapter.ArticleAdapter
 import com.example.mvpapp.constants.Constants
 import com.example.mvpapp.imagemodule.imageLoader
 import com.example.mvpapp.model.Results
 import com.example.mvpapp.network.DomainIntegration
-import com.example.mvpapp.network.article.ArticleContract
-import com.example.mvpapp.network.article.articlePresenter
 
-class MainActivity : AppCompatActivity(), ArticleContract.View,
+class ArticleActivity : AppCompatActivity(), ArticleContract.View,
     ArticleAdapter.OnArticleItemClicked {
 
     private lateinit var mRecyclerView: RecyclerView

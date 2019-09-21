@@ -1,19 +1,13 @@
-package com.example.mvpapp.adapter
+package com.example.mvpapp.articleListMVP.adapter
 
-import android.content.Context
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.mvpapp.MainActivity
 import com.example.mvpapp.R
 import com.example.mvpapp.model.Results
-import kotlinx.android.synthetic.main.article_item.view.*
 
 /**
  * Created by Ahmed Abdullah on 9/20/2019.

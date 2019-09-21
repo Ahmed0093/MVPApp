@@ -1,6 +1,5 @@
-package com.example.mvpapp.adapter
+package com.example.mvpapp.articleListMVP.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

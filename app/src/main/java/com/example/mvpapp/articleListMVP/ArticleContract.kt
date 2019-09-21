@@ -1,12 +1,11 @@
-package com.example.mvpapp.network.article
+package com.example.mvpapp.articleListMVP
 
-import com.example.mvpapp.MainActivity
 import com.example.mvpapp.model.Results
 
 /**
  * Created by Ahmed Abdullah on 9/20/2019.
  */
-val articleContractView by lazy { MainActivity() }
+val articleContractView by lazy { ArticleActivity() }
 
  interface ArticleContract {
     interface View {
@@ -19,7 +18,7 @@ val articleContractView by lazy { MainActivity() }
 
     interface Presenter {
         fun fetchArticles()
-        fun setView(mainActivity: MainActivity)
+        fun setView(mainActivity: ArticleActivity)
         fun onArticleItemCLicked(results: Results)
         fun onDestroyCalled()
 
