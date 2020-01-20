@@ -1,16 +1,11 @@
-node("android"){
-  stage("Checkout"){
-    checkout scm
-  }
+pipeline {
+   agent any
 
-  stage ("Prepare"){
-    sh 'chmod +x ./gradlew'
-  }
-
-    stage("Build"){
-    if (params.BUILD_CONFIG == 'release') {
-      sh './gradlew clean assembleRelease' // builds app/build/outputs/apk/app-release.apk file
-    } else {
-      sh './gradlew clean assembleDebug' // builds app/build/outputs/apk/app-debug.apk
-    }
-  }
+   stages {
+      stage('Hello') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+   }
+}
