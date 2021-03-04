@@ -1,6 +1,6 @@
 # MVPApp
 
-This project is aimed for learning and to get hands dirty with MVP architecture using Kotlin,Rx-Java2 with adding Unit Tests and UI test.
+This project is aimed for learning and to get hands dirty with MVP architecture using Kotlin,Rx-Java2 with adding Unit Tests and UI test using Espresso.
 with coverage report.
 lazy functianlites and deafult value constractor were used from kotlin to make an easy dependency injection without using external dependency injection framework.
 
@@ -24,7 +24,7 @@ from gradle also sonarqube task .
 
 ### TO DO
  
--Adding Scripts to automate build and Report generation.
+-Adding More Scripts From GithubAction
 
 
 ## Acknowledgments
